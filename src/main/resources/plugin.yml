@@ -1,0 +1,9 @@
+name: LittleWeb
+version: '${project.version}'
+main: com.pequla.link.LittleWeb
+api-version: 1.19
+load: STARTUP
+depend: [ LittleLink ]
+authors: [ Pequla ]
+description: Exposes a public API from data found in LittleLink
+website: https://pequla.com
