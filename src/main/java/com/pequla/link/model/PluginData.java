@@ -7,9 +7,10 @@ import java.util.List;
 
 @Data
 @Builder
-public class ServerStatus {
-    private PlayerStatus players;
-    private WorldData world;
-    private List<PluginData> plugins;
+public class PluginData {
+    private String name;
     private String version;
+    private List<String> authors;
+    private String description;
+    private String website;
 }

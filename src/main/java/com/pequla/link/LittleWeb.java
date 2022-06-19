@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pequla.link.model.*;
 import com.pequla.link.service.DataService;
 import org.bukkit.World;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import spark.Spark;
@@ -51,10 +51,17 @@ public final class LittleWeb extends JavaPlugin {
                     .id(player.getUniqueId().toString())
                     .build())
             );
-
-            List<String> plugins = Arrays.stream(getServer().getPluginManager().getPlugins())
-                    .map(Plugin::getName)
-                    .collect(Collectors.toList());
+            List<PluginData> plugins = Arrays.stream(manager.getPlugins())
+                    .map(p -> {
+                        PluginDescriptionFile description = p.getDescription();
+                        return PluginData.builder()
+                                .name(p.getName())
+                                .website(p.getDescription().getWebsite())
+                                .description(description.getDescription())
+                                .version(description.getVersion())
+                                .authors(description.getAuthors())
+                                .build();
+                    }).collect(Collectors.toList());
 
             World world = getServer().getWorlds().get(0);
             return mapper.writeValueAsString(ServerStatus.builder()

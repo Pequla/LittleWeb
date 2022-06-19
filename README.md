@@ -50,18 +50,36 @@ Sample response:
         "time": 836,
         "type": "minecraft:normal"
     },
-    "plugins": [
-        "CoreProtect",
-        "LuckPerms",
-        "LittleLink",
-        "Vault",
-        "LittleWeb",
-        "LWC",
-        "Essentials",
-        "EssentialsSpawn",
-        "EssentialsChat"
-    ],
-    "version": "git-Paper-14 (MC: 1.19)"
+  "plugins": [
+    {
+      "name": "LittleLink",
+      "version": "1.4",
+      "authors": [
+        "Pequla"
+      ],
+      "description": "Allows for simple whitelisting on the minecraft server",
+      "website": "https://pequla.com"
+    },
+    {
+      "name": "LittleWeb",
+      "version": "1.1",
+      "authors": [
+        "Pequla"
+      ],
+      "description": "Exposes a public REST API from data found in LittleLink",
+      "website": "https://github.com/Pequla/LittleWeb"
+    },
+    {
+      "name": "LittleHooks",
+      "version": "1.0",
+      "authors": [
+        "Pequla"
+      ],
+      "description": "Discord webhook integration for your minecraft server",
+      "website": "https://pequla.com"
+    }
+  ],
+  "version": "git-Paper-14 (MC: 1.19)"
 }
 ```
 

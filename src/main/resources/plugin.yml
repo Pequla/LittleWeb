@@ -5,5 +5,5 @@ api-version: 1.19
 load: STARTUP
 depend: [ LittleLink ]
 authors: [ Pequla ]
-description: Exposes a public API from data found in LittleLink
-website: https://pequla.com
+description: Exposes a public REST API from data found in LittleLink
+website: https://github.com/Pequla/LittleWeb
