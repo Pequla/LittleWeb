@@ -23,37 +23,63 @@ Plugin provides currently only 2 endpoints
 Sample response:
 ```json
 {
-    "players": {
-        "max": 30,
-        "online": 4,
-        "list": [
-            {
-                "name": "L_Yuae",
-                "id": "69c154a4-0a6a-4578-b169-c4be379e1e8e"
-            },
-            {
-                "name": "redshock_432",
-                "id": "126b3c27-3d53-40e3-a531-dbd59cd3cc1c"
-            },
-            {
-                "name": "wyvy64",
-                "id": "caa84dd1-1142-41cc-b307-14f4abdc540e"
-            },
-            {
-                "name": "Bundering",
-                "id": "ff1b1e7c-0c1f-4142-b2df-d16a403c025d"
-            }
-        ]
-    },
-    "world": {
-        "seed": "-4255308501429674615",
-        "time": 836,
-        "type": "minecraft:normal"
-    },
+  "players": {
+    "max": 30,
+    "online": 3,
+    "list": [
+      {
+        "name": "jb_himawari",
+        "displayName:": "Himawari",
+        "id": "12b7b9c9-7611-4679-bae8-94ed55a6b7a4"
+      },
+      {
+        "name": "Twan_MC",
+        "displayName:": "Tawan",
+        "id": "eaf3de81-e7e9-4395-a0b1-456735b63aa7"
+      },
+      {
+        "name": "Rekcah_",
+        "displayName:": "Elle",
+        "id": "5be97b0c-657f-4fb9-baa8-b463b3040c28"
+      }
+    ]
+  },
+  "world": {
+    "seed": "-4255308501429674615",
+    "time": 2832,
+    "type": "minecraft:normal"
+  },
   "plugins": [
     {
+      "name": "CoreProtect",
+      "version": "21.2",
+      "authors": [
+        "Intelli"
+      ],
+      "description": "Provides block protection for your server.\n",
+      "website": "http://coreprotect.net"
+    },
+    {
+      "name": "LuckPerms",
+      "version": "5.4.26",
+      "authors": [
+        "Luck"
+      ],
+      "description": "A permissions plugin",
+      "website": "https://luckperms.net"
+    },
+    {
+      "name": "CustomBeaconRange",
+      "version": "0.1",
+      "authors": [
+        "Soussou"
+      ],
+      "description": "A plugin to customize beacon effect range",
+      "website": null
+    },
+    {
       "name": "LittleLink",
-      "version": "1.4",
+      "version": "1.5",
       "authors": [
         "Pequla"
       ],
@@ -77,9 +103,118 @@ Sample response:
       ],
       "description": "Discord webhook integration for your minecraft server",
       "website": "https://pequla.com"
+    },
+    {
+      "name": "spark",
+      "version": "1.9.9",
+      "authors": [
+        "Luck"
+      ],
+      "description": "spark is a performance profiling plugin/mod for Minecraft clients, servers and proxies.",
+      "website": "https://spark.lucko.me/"
+    },
+    {
+      "name": "Vault",
+      "version": "1.7.3-b131",
+      "authors": [
+        "cereal",
+        "Sleaker",
+        "mung3r"
+      ],
+      "description": "Vault is a Permissions & Economy API to allow plugins to more easily hook into these systems without needing to hook each individual system themselves.",
+      "website": "https://dev.bukkit.org/projects/vault"
+    },
+    {
+      "name": "Essentials",
+      "version": "2.19.5-dev+23-6816eb4",
+      "authors": [
+        "Zenexer",
+        "ementalo",
+        "Aelux",
+        "Brettflan",
+        "KimKandor",
+        "snowleo",
+        "ceulemans",
+        "Xeology",
+        "KHobbits",
+        "md_5",
+        "Iaccidentally",
+        "drtshock",
+        "vemacs",
+        "SupaHam",
+        "mdcfe",
+        "JRoy",
+        "pop4959"
+      ],
+      "description": "Provides an essential, core set of commands for Bukkit.",
+      "website": "https://essentialsx.net/"
+    },
+    {
+      "name": "EssentialsChat",
+      "version": "2.19.5-dev+23-6816eb4",
+      "authors": [
+        "Zenexer",
+        "ementalo",
+        "Aelux",
+        "Brettflan",
+        "KimKandor",
+        "snowleo",
+        "ceulemans",
+        "Xeology",
+        "KHobbits",
+        "md_5",
+        "Okamosy",
+        "Iaccidentally",
+        "mdcfe",
+        "JRoy",
+        "triagonal"
+      ],
+      "description": "Provides chat control features for Essentials.  Requires Permissions.",
+      "website": "https://essentialsx.net/"
+    },
+    {
+      "name": "LWC",
+      "version": "2.2.7-ad0f824",
+      "authors": [
+        "Hidendra",
+        "pop4959",
+        "Me_Goes_RAWR"
+      ],
+      "description": "Inventory protection & management utilizing SQLite or MySQL as its backend Other blocks can also be protected individually, if configured.\n",
+      "website": "https://www.spigotmc.org/resources/lwc-extended.69551/"
+    },
+    {
+      "name": "EssentialsSpawn",
+      "version": "2.19.5-dev+23-6816eb4",
+      "authors": [
+        "Zenexer",
+        "ementalo",
+        "Aelux",
+        "Brettflan",
+        "KimKandor",
+        "snowleo",
+        "ceulemans",
+        "Xeology",
+        "KHobbits",
+        "SupaHam",
+        "mdcfe",
+        "DoNotSpamPls",
+        "JRoy"
+      ],
+      "description": "Provides spawn control commands, utilizing Essentials.",
+      "website": "https://essentialsx.net/"
+    },
+    {
+      "name": "Harbor",
+      "version": "1.6.3",
+      "authors": [
+        "TechToolbox (@nkomarn)"
+      ],
+      "description": "Harbor redefines how sleep works in your server, making it easier for all the online players to get in bed quickly and skip through the night!",
+      "website": "https://nkomarn.xyz"
     }
   ],
-  "version": "git-Paper-14 (MC: 1.19)"
+  "version": "git-Paper-41 (MC: 1.19)"
 }
 ```
 

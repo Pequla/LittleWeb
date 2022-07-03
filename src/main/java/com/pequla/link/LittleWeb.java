@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pequla.link.model.*;
 import com.pequla.link.service.DataService;
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
@@ -48,6 +49,7 @@ public final class LittleWeb extends JavaPlugin {
             HashSet<PlayerData> list = new HashSet<>();
             getServer().getOnlinePlayers().forEach(player -> list.add(PlayerData.builder()
                     .name(player.getName())
+                    .displayName(ChatColor.stripColor(player.getDisplayName()))
                     .id(player.getUniqueId().toString())
                     .build())
             );

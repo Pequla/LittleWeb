@@ -7,5 +7,6 @@ import lombok.Data;
 @Builder
 public class PlayerData {
     private String name;
+    private String displayName;
     private String id;
 }
