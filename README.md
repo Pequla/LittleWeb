@@ -18,7 +18,7 @@ api:
 
 Plugin provides currently only 2 endpoints
 
-### GET /api/user
+### GET /api/status
 
 Sample response:
 ```json
