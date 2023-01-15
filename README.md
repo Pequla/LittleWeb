@@ -18,7 +18,7 @@ api:
 
 Plugin provides currently only 2 endpoints
 
-### GET /api/status
+### GET `/api/status`
 
 Sample response:
 ```json
@@ -217,7 +217,7 @@ Sample response:
 
 > When there are no players online the `list` will be returned as an empty array
 
-### GET /api/user
+### GET `/api/user`
 
 > The `uuid` query parameter is mandatory. So the example url should be `/api/user?uuid=69c154a4-0a6a-4578-b169-c4be379e1e8e`
 
@@ -231,9 +231,9 @@ Sample response:
 }
 ```
 
-### GET /api/players
+### GET `/api/players`
 
-> Disp
+> Displays all players that have ever joined the server
 
 Sample response:
 ```json
