@@ -28,19 +28,16 @@ Sample response:
     "online": 3,
     "list": [
       {
-        "name": "jb_himawari",
-        "displayName:": "Himawari",
-        "id": "12b7b9c9-7611-4679-bae8-94ed55a6b7a4"
+        "id": "12b7b9c9-7611-4679-bae8-94ed55a6b7a4",
+        "name": "jb_himawari"
       },
       {
-        "name": "Twan_MC",
-        "displayName:": "Tawan",
-        "id": "eaf3de81-e7e9-4395-a0b1-456735b63aa7"
+        "id": "eaf3de81-e7e9-4395-a0b1-456735b63aa7",
+        "name": "Twan_MC"
       },
       {
-        "name": "Rekcah_",
-        "displayName:": "Elle",
-        "id": "5be97b0c-657f-4fb9-baa8-b463b3040c28"
+        "id": "5be97b0c-657f-4fb9-baa8-b463b3040c28",
+        "name": "Rekcah_"
       }
     ]
   },
@@ -79,7 +76,7 @@ Sample response:
     },
     {
       "name": "LittleLink",
-      "version": "1.5",
+      "version": "1.7",
       "authors": [
         "Pequla"
       ],
@@ -88,7 +85,7 @@ Sample response:
     },
     {
       "name": "LittleWeb",
-      "version": "1.1",
+      "version": "1.3",
       "authors": [
         "Pequla"
       ],
@@ -97,7 +94,7 @@ Sample response:
     },
     {
       "name": "LittleHooks",
-      "version": "1.0",
+      "version": "1.2",
       "authors": [
         "Pequla"
       ],
@@ -232,6 +229,28 @@ Sample response:
     "nickname": "Yuae %",
     "avatar": "https://cdn.discordapp.com/avatars/407635624787443712/8d80be04a42c5622aa5ebe358c68ea67.png"
 }
+```
+
+### GET /api/players
+
+> Disp
+
+Sample response:
+```json
+[
+  {
+    "id": "12b7b9c9-7611-4679-bae8-94ed55a6b7a4",
+    "name": "jb_himawari"
+  },
+  {
+    "id": "eaf3de81-e7e9-4395-a0b1-456735b63aa7",
+    "name": "Twan_MC"
+  },
+  {
+    "id": "5be97b0c-657f-4fb9-baa8-b463b3040c28",
+    "name": "Rekcah_"
+  }
+]
 ```
 
 ### Exceptions and Status codes

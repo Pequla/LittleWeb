@@ -45,12 +45,18 @@ public final class LittleWeb extends JavaPlugin {
             response.type("application/json");
         });
 
+        Spark.get("/api/players", ((request, response) ->
+                mapper.writeValueAsString(Arrays.stream(getServer().getOfflinePlayers()).map(p ->
+                        PlayerData.builder()
+                                .id(p.getUniqueId().toString())
+                                .name(p.getName())
+                                .build()).collect(Collectors.toList()))));
+
         Spark.get("/api/status", (request, response) -> {
             HashSet<PlayerData> list = new HashSet<>();
             getServer().getOnlinePlayers().forEach(player -> list.add(PlayerData.builder()
-                    .name(player.getName())
-                    .displayName(ChatColor.stripColor(player.getDisplayName()))
                     .id(player.getUniqueId().toString())
+                    .name(player.getName())
                     .build())
             );
             List<PluginData> plugins = Arrays.stream(manager.getPlugins())
