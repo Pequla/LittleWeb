@@ -1,7 +1,7 @@
 # LittleWeb
 Spigot plugin that exposes a REST API for developers to consume
 
-Requires plugin [LittleLink](https://github.com/Pequla/LittleLink/releases/latest)
+> Requires plugin [LittleLink](https://github.com/Pequla/LittleLink/releases/latest)
 
 ## Configuration
 
@@ -216,6 +216,12 @@ Sample response:
 ```
 
 > When there are no players online the `list` will be returned as an empty array
+
+There are also additional endpoints for targeting specific fields:
+
+- GET `/api/status/players` (Returns only the `players` object)
+- GET `/api/status/plugins` (Returns only the `plugins` array)
+- GET `/api/status/world` (Returns only the `world` object)
 
 ### GET `/api/user`
 

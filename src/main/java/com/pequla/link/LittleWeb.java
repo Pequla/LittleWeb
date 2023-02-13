@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pequla.link.model.*;
 import com.pequla.link.service.DataService;
-import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
@@ -52,41 +51,17 @@ public final class LittleWeb extends JavaPlugin {
                                 .name(p.getName())
                                 .build()).collect(Collectors.toList()))));
 
-        Spark.get("/api/status", (request, response) -> {
-            HashSet<PlayerData> list = new HashSet<>();
-            getServer().getOnlinePlayers().forEach(player -> list.add(PlayerData.builder()
-                    .id(player.getUniqueId().toString())
-                    .name(player.getName())
-                    .build())
-            );
-            List<PluginData> plugins = Arrays.stream(manager.getPlugins())
-                    .map(p -> {
-                        PluginDescriptionFile description = p.getDescription();
-                        return PluginData.builder()
-                                .name(p.getName())
-                                .website(p.getDescription().getWebsite())
-                                .description(description.getDescription())
-                                .version(description.getVersion())
-                                .authors(description.getAuthors())
-                                .build();
-                    }).collect(Collectors.toList());
+        Spark.get("/api/status", (request, response) ->
+                mapper.writeValueAsString(ServerStatus.builder()
+                        .players(getPlayerStatus())
+                        .plugins(getPluginData(manager))
+                        .world(getWorldData())
+                        .version(getServer().getVersion())
+                        .build()));
 
-            World world = getServer().getWorlds().get(0);
-            return mapper.writeValueAsString(ServerStatus.builder()
-                    .players(PlayerStatus.builder()
-                            .online(list.size())
-                            .max(getServer().getMaxPlayers())
-                            .list(list)
-                            .build())
-                    .plugins(plugins)
-                    .world(WorldData.builder()
-                            .seed(String.valueOf(world.getSeed()))
-                            .time(world.getTime())
-                            .type(getServer().getWorldType())
-                            .build())
-                    .version(getServer().getVersion())
-                    .build());
-        });
+        Spark.get("/api/status/players", (request, response) -> mapper.writeValueAsString(getPlayerStatus()));
+        Spark.get("/api/status/plugins", (request, response) -> mapper.writeValueAsString(getPluginData(manager)));
+        Spark.get("/api/status/world", (request, response) -> mapper.writeValueAsString(getWorldData()));
 
         Spark.get("/api/user", (request, response) -> {
             String uuid = request.queryParams("uuid");
@@ -126,6 +101,42 @@ public final class LittleWeb extends JavaPlugin {
     public void onDisable() {
         getLogger().info("Closing down internal server");
         Spark.stop();
+    }
+
+    public PlayerStatus getPlayerStatus() {
+        HashSet<PlayerData> list = new HashSet<>();
+        getServer().getOnlinePlayers().forEach(player -> list.add(PlayerData.builder()
+                .id(player.getUniqueId().toString())
+                .name(player.getName())
+                .build())
+        );
+        return PlayerStatus.builder()
+                .online(list.size())
+                .max(getServer().getMaxPlayers())
+                .list(list)
+                .build();
+    }
+
+    public List<PluginData> getPluginData(PluginManager manager) {
+        return Arrays.stream(manager.getPlugins()).map(p -> {
+            PluginDescriptionFile description = p.getDescription();
+            return PluginData.builder()
+                    .name(p.getName())
+                    .website(p.getDescription().getWebsite())
+                    .description(description.getDescription())
+                    .version(description.getVersion())
+                    .authors(description.getAuthors())
+                    .build();
+        }).collect(Collectors.toList());
+    }
+
+    public WorldData getWorldData() {
+        World world = getServer().getWorlds().get(0);
+        return WorldData.builder()
+                .seed(String.valueOf(world.getSeed()))
+                .time(world.getTime())
+                .type(getServer().getWorldType())
+                .build();
     }
 
     public static String generateError(String error) throws JsonProcessingException {
